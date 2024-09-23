@@ -8,7 +8,7 @@ setup-deps: ## install dependencies
 		@echo "Installing dependencies...."
 		@command -v kind >/dev/null 2>&1 || { echo >&2 "kubectl is not installed, installing..."; curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.24.0/kind-linux-amd64; chmod +x ./kind; sudo mv ./kind /usr/local/bin/kind; }
 		@echo "Kind installed!"
-		@command -v kubectl >/dev/null 2>&1 || { echo >&2 "kubectl is not installed, installing..."; curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"; sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl; }
+		@command -v kubectl >/dev/null 2>&1 || { echo >&2 "kubectl is not installed, installing..."; curl -LO https://dl.k8s.io/release/v1.31.0/bin/linux/amd64/kubectl; sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl; rm kubectl;}
 		@echo "Kubectl installed!"
 		@command -v helm >/dev/null 2>&1 || { echo >&2 "helm is not installed, installing..."; curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3; chmod 700 get_helm.sh; ./get_helm.sh; rm get_helm.sh;  }
 		@echo "Helm installed!"
@@ -17,7 +17,7 @@ setup-deps: ## install dependencies
 .PHONY: setup-cluster
 setup-cluster: ## setup kind cluster
 		@echo "Creating kind cluster"
-		kind create cluster --config cfg-cluster.yaml
+		sudo kind create cluster --config cfg-cluster.yaml
 
 .PHONY: setup-demo
 setup-demo: ## wip:setup demo application
