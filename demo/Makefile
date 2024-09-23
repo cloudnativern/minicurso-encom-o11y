@@ -1,7 +1,7 @@
 
 .PHONY: help
 help: ## this help
-	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m\033[0m\n"} /^[$$()% a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
+	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  \033[36m\033[0m\n"} /^[$$()% a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
 .PHONY: setup-deps
 setup-deps: ## install dependencies
@@ -17,7 +17,7 @@ setup-deps: ## install dependencies
 .PHONY: setup-cluster
 setup-cluster: ## setup kind cluster
 		@echo "Creating kind cluster"
-		kind create cluster --name otel-demo
+		kind create cluster --config cfg-cluster.yaml
 
 .PHONY: setup-demo
 setup-demo: ## wip:setup demo application
