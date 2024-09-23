@@ -17,11 +17,18 @@ setup-deps: ## install dependencies
 .PHONY: setup-cluster
 setup-cluster: ## setup kind cluster
 		@echo "Creating kind cluster"
-		sudo kind create cluster --config cfg-cluster.yaml
+		kind create cluster --config cfg-cluster.yaml
 
 .PHONY: setup-demo
 setup-demo: ## wip:setup demo application
 		@echo "Setting up the demo app"
+		helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
+		helm install --create-namespace otel-demo open-telemetry/opentelemetry-demo -f values.yaml -n otel-demo
+
+.PHONY: expose-demo
+expose-demo: ## expose the port to access the demo
+	@echo "Setting up the demo app"
+	kubectl port-forward svc/otel-demo-frontendproxy 8080:8080 -n otel-demo
 
 .PHONY:cleanup
 cleanup: ## cleanup environment
