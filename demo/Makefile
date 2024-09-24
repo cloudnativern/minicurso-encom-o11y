@@ -33,6 +33,7 @@ expose-demo: ## expose the port to access the demo
 .PHONY:cleanup
 cleanup: ## cleanup environment
 		@echo "Cleaning up the resources"
+		helm uninstall otel-demo -n otel-demo
 		kind delete cluster --name otel-demo
 
 

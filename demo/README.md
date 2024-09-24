@@ -44,8 +44,27 @@ Após o cluster estar executando, faça a instalação da aplicação demo:
 ```bash
 make setup-demo
 ```
+A aplicação vai levar em torno de 5-8 minutos para estar pronta, para checar se todos os *Pods* estão executando corretamente:
+```bash
+kubectl get po -n otel-demo
+```
+
+Após estar executando corretamente, exponha o proxy que vai permitir que seja feito o acesso aos componentes da demonstração (na porta `8080`):
+```bash
+make expose-demo
+```
+
+Sendo:
+* `http://localhost:8080/`: aplicação
+* `http://localhost:8080/grafana/`: Grafana
+* `http://localhost:8080/loadgen/`: Load Generator UI
+* `http://localhost:8080/jaeger/ui/`: Jaeger UI
 
 
+Ao final, quando terminar o workshop, executar o comando abaixo para remover todos os recursos:
+```bash
+make cleanup
+```
 
 
 
