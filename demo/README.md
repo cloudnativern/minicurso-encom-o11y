@@ -10,16 +10,15 @@ Para melhor aproveitamento desse workshop, é esperado que você tenha conhecime
 * Conceitos de Observabilidade
 
 ## Componentes
-* Aplicação/Serviço
+* [Serviços (da aplicação)](https://opentelemetry.io/docs/demo/services/)
 * OpenTelemetry Collector
 * Jaeger UI
 * Grafana
 * Prometheus
 * Loki
 
-
 ## Como Funciona
-TBD
+Diagrama de arquitetura completa: https://opentelemetry.io/docs/demo/architecture/
 
 ## Instalação/Configuração
 
