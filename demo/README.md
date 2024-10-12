@@ -7,17 +7,29 @@ Demo de observabilidade apresentada no workshop.
 Para melhor aproveitamento desse workshop, é esperado que você tenha conhecimentos prévios em:
 * Kubernetes
 * Docker
-* Conceitos de Observabilidade
+* Conceitos teóricos de Observabilidade
 
 ## Componentes
-* [Serviços (da aplicação)](https://opentelemetry.io/docs/demo/services/)
+
+Essa demo, é a mesma demo usada oficialmente pelo projeto OpenTelemetry, apenas com algumas modificações.
+Abaixo os componentes que fazem parte:
+
+* [Serviços e dependências (da aplicação)](https://opentelemetry.io/docs/demo/services/)
 * OpenTelemetry Collector
 * Jaeger UI
+* Locust
 * Grafana
 * Prometheus
-* Loki
 
 ## Como Funciona
+
+TL;DR: os sinais emitidos (logs, métricas e traces) pelos componentes da aplicação são coletados e processados pelo OTel Collector e enviados para os backends:
+* prometheus para métricas
+* jaeger para traces
+* opensearch para logs
+
+E todos esses backends estão configurados para visualização no Grafana.
+
 Diagrama de arquitetura completa: https://opentelemetry.io/docs/demo/architecture/
 
 ## Instalação/Configuração
@@ -56,7 +68,7 @@ make expose-demo
 Sendo:
 * `http://localhost:8080/`: aplicação
 * `http://localhost:8080/grafana/`: Grafana
-* `http://localhost:8080/loadgen/`: Load Generator UI
+* `http://localhost:8080/loadgen/`: Locust UI
 * `http://localhost:8080/jaeger/ui/`: Jaeger UI
 
 
