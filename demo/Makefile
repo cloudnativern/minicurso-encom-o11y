@@ -17,7 +17,7 @@ setup-deps: ## install dependencies
 .PHONY: setup-cluster
 setup-cluster: ## setup kind cluster
 		@echo "Creating kind cluster"
-		kind create cluster --config cfg-cluster.yaml
+		kind create cluster --config kind/cfg-cluster.yaml
 
 .PHONY: setup-demo
 setup-demo: ## setup demo application

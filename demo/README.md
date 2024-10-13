@@ -11,7 +11,7 @@ Para melhor aproveitamento desse workshop, é esperado que você tenha conhecime
 
 ## Componentes
 
-Essa demo, é a mesma demo usada oficialmente pelo projeto OpenTelemetry, apenas com algumas modificações.
+Essa demo, é a mesma usada oficialmente pelo projeto OpenTelemetry, apenas com algumas modificações.   
 Abaixo os componentes que fazem parte:
 
 * [Serviços e dependências (da aplicação)](https://opentelemetry.io/docs/demo/services/)
@@ -24,6 +24,7 @@ Abaixo os componentes que fazem parte:
 ## Como Funciona
 
 TL;DR: os sinais emitidos (logs, métricas e traces) pelos componentes da aplicação são coletados e processados pelo OTel Collector e enviados para os backends:
+
 * prometheus para métricas
 * jaeger para traces
 * opensearch para logs
@@ -77,6 +78,13 @@ Ao final, quando terminar o workshop, executar o comando abaixo para remover tod
 make cleanup
 ```
 
+## Referências e outras sugestões
+* https://opentelemetry.io/docs/demo/
+* https://dosedetelemetria.com/
+* Outras recomendações de ferramentas opensource para Observabilidade:
+    * Grafana Tempo: backend para traces
+    * Grafana Mimir: backend para métricas
+    * Grafana Loki: backend para logs
 
 
 

@@ -157,7 +157,7 @@ components:
   #      runAsUser: 65534
 
   accountingService:
-    enabled: true
+    enabled: false
     useDefault:
       env: true
     env:
@@ -222,7 +222,7 @@ components:
         command: ['sh', '-c', 'until nc -z -v -w30 {{ include "otel-demo.name" . }}-valkey 6379; do echo waiting for valkey; sleep 2; done;']
 
   checkoutService:
-    enabled: true
+    enabled: false
     useDefault:
       env: true
     service:
@@ -293,7 +293,7 @@ components:
         memory: 100Mi
 
   frauddetectionService:
-    enabled: true
+    enabled: false
     useDefault:
       env: true
     env:
@@ -589,7 +589,7 @@ components:
         existingConfigMap: '{{ include "otel-demo.name" . }}-flagd-config'
 
   kafka:
-    enabled: true
+    enabled: false
     useDefault:
       env: true
     replicas: 1
@@ -693,6 +693,7 @@ opentelemetry-collector:
           endpoint: "http://otel-demo-opensearch:9200"
           tls:
             insecure: true
+
 
     processors:
       # This processor is used to help limit high cardinality on next.js span names
