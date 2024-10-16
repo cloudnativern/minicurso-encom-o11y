@@ -6,7 +6,7 @@ help: ## this help
 .PHONY: setup-deps
 setup-deps: ## install dependencies
 		@echo "Installing dependencies...."
-		@command -v kind >/dev/null 2>&1 || { echo >&2 "kubectl is not installed, installing..."; curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.24.0/kind-linux-amd64; chmod +x ./kind; sudo mv ./kind /usr/local/bin/kind; }
+		@command -v kind >/dev/null 2>&1 || { echo >&2 "kind is not installed, installing..."; curl -Lo ./kind-bin https://kind.sigs.k8s.io/dl/v0.24.0/kind-linux-amd64; sudo chmod +x ./kind-bin; sudo mv ./kind-bin /usr/local/bin/kind; }
 		@echo "Kind installed!"
 		@command -v kubectl >/dev/null 2>&1 || { echo >&2 "kubectl is not installed, installing..."; curl -LO https://dl.k8s.io/release/v1.31.0/bin/linux/amd64/kubectl; sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl; rm kubectl;}
 		@echo "Kubectl installed!"
