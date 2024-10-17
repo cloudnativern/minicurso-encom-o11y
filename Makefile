@@ -23,12 +23,12 @@ setup-cluster: ## setup kind cluster
 setup-demo: ## setup demo application
 		@echo "Setting up the demo app"
 		helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
-		helm install --create-namespace otel-demo open-telemetry/opentelemetry-demo -f values.yaml -n otel-demo
+		helm install --create-namespace otel-demo open-telemetry/opentelemetry-demo -f demo/values.yaml -n otel-demo
 
 .PHONY: update-demo
-update-demo: ## update demo values
+upgrade-demo: ## upgrade demo values
 	@echo "Updating the demo app"
-	helm upgrade otel-demo open-telemetry/opentelemetry-demo -f values.yaml -n otel-demo
+	helm upgrade otel-demo open-telemetry/opentelemetry-demo -f demo/values.yaml -n otel-demo
 
 
 .PHONY: expose-demo

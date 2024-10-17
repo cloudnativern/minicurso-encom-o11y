@@ -1,0 +1,33 @@
+Vagrant.configure("2") do |config|
+    config.vm.box = "ubuntu/jammy64"
+  
+    # VM settings
+    config.vm.provider "virtualbox" do |vb|
+      vb.memory = "8100" # 8GB RAM
+      vb.cpus = 4        # 4 CPUs
+    end
+  
+    # host-only
+    config.vm.network "private_network", type: "dhcp"
+  
+    # setup packages
+    config.vm.provision "shell", inline: <<-SHELL
+      # Update the package list
+      sudo apt-get update
+  
+      # Install prerequisite packages
+      sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common git curl build-essential
+      curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
+      
+      # Add the vagrant user to the docker group
+      sudo usermod -aG docker vagrant
+
+      # setup repo
+      git clone https://github.com/cloudnativern/o11y-workshop.git && cd o11y-workshop
+      make setup-deps
+  
+    SHELL
+  
+    # SSH configuration (default settings)
+    config.ssh.insert_key = true
+  end
