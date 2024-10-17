@@ -11,7 +11,7 @@ Para usar, é necessário ter instalado:
 E estar em um *host* Linux.
 
 ## Como usar
-Para criar a máquina virtual, executar:
+Para criar a máquina virtual, executar (dentro do diretório `vagrant/`):
 ```bash
 vagrant up
 ```
