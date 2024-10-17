@@ -1,4 +1,5 @@
 # Workshop de Observabilidade
+
 > Tempo estimado: 2 horas
 
 ## Requisitos
@@ -37,7 +38,11 @@ TL;DR: os sinais emitidos (logs, métricas e traces) pelos componentes da aplica
 
 E todos esses backends estão configurados para visualização no Grafana.
 
+Sobre a instalação, usamos um cluster Kubernetes local (com kind) e instalamos a demonstração por meio de um helm chart.
+
+
 Diagrama de arquitetura completa: https://opentelemetry.io/docs/demo/architecture/
+
 
 ## Instalação/Configuração
 
